@@ -1,0 +1,38 @@
+#problem solved:Two Sum by myself 
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+           int indices[]=new int[2];
+       for(int i=0;i<nums.length;i++){
+        int sum=nums[i];//int two=0;
+        for(int j=i+1;j<nums.length;j++){
+            if((sum+=nums[j])==target){
+                indices[0]=i;
+                indices[1]=j;
+               
+            }
+ sum-=nums[j];       # did i mistake by adding this line code inside if block later i identified and corrected it .
+        }
+       }
+       return indices; 
+    }
+}
+
+#logic i used to solve this is I used two loops to consider one element at a time and checking if any element after that will give me target element sum if not again subtracting the element which failed to give target as sum
+#Time Complexity is O(n^2) due to two loops which need to be reduced.
+so using Ai in efficient way I went deep into the concept of HashMap that how this can be applied here.
+I learnt :
+How HashMap stores (key → value) pairs
+How to reduce time complexity from O(n²) to O(n) and how much time complexity matters.
+/*
+HashMap<Integer,Integer>map=new HashMap<>();  // map is empty we put key and values to keep record 
+int indices[]=new int[2];
+for(int i=0;i<nums.length;i++){
+    int needed=target-nums[i];
+    if(map.containskey(needed)){
+        indices[0]=map.get(needed);
+        indices[1]=i;
+        return indices;
+    }
+    map.put(nums[i],i);  // everytime whenever the needed element isn't there it will keep it as record what if later we need the previous elements to complete the twosums//
+}
+ */
