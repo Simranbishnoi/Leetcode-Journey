@@ -1,0 +1,49 @@
+//It is my approach using two loops and checking each profit and comparing with previous maximum sum and updating the max 
+/*class Solution {
+    public int maxProfit(int[] prices) {
+        int max=0;
+        for(int i=0;i<prices.length;i++){
+            for(int j=i+1;j<prices.length;j++){
+              
+               int profit=prices[j]-prices[i];
+               if(profit>max){
+                max=profit;
+               }
+            }
+        }
+        return max;
+    }
+}*/
+//Now trying optimised solution
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min_price=Integer.MAX_VALUE;
+        int max_profit=0;
+        for(int i=0;i<prices.length;i++){
+            if(prices[i]<min_price){
+                min_price=prices[i];
+            }
+            else{
+               int profit=prices[i]-min_price;
+               if(profit>max_profit){
+                max_profit=profit;
+               }
+
+            }
+
+        }
+        return max_profit;
+    }
+
+}
+/*
+here what actually we did(as I did brute force code by myself so i took help from my design and analysis notes like how we should build the algorithm by keeping in mind for optimal solution so this is what I came up with )
+we will iterate the loop only once but with every iteration we will keep tracking the minimum price so far and and max profit 
+if price we get more less we saw till now ,update min price
+else
+price is more , compute profit=price-min_price
+if profit>max_profit,update max profit
+return max profit
+
+*/
+//It was great learning how to reduce time complexity from O(n^2) to O(n) using scanning the array only once.
