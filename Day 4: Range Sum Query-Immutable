@@ -1,0 +1,56 @@
+class NumArray {
+     int nums[];
+      int arr[];
+    
+    public NumArray(int[] nums) {
+        this.nums=nums;
+       arr=new int [nums.length];
+        arr[0]=nums[0];
+        for(int i=1;i<nums.length;i++){
+            arr[i]=arr[i-1]+nums[i];
+        }
+
+    }
+    
+    public int sumRange(int left, int right) {
+        int sum=0;
+        if(left==0){
+            return arr[right];
+        }
+        else{
+            sum=arr[right]-arr[left-1];
+        
+        return sum;}
+    }
+}
+
+/**
+ * Your NumArray object will be instantiated and called as such:
+ * NumArray obj = new NumArray(nums);
+ * int param_1 = obj.sumRange(left,right);
+ */
+ /*
+ //My approach 
+ 
+class NumArray {
+     int nums[];
+    
+    
+    public NumArray(int[] nums) {
+        this.nums=nums;
+    }
+    
+    public int sumRange(int left, int right) {
+        int sum=0;
+        for(int i=left;i<=right;i++){
+            sum+=nums[i];
+        }
+        return sum;
+    }
+} 
+here i just used loop from left to right and takin sum but it gives TC of O(n*Q) ,Q is number of queries 
+so every time loop is running for many queries asked in input 
+the Optimised solution taught me how using that one loop for creating new sum array in constructor can save time ;
+as my for loop will run for every input and it will iterate for n times
+but this one created new array which run only once during created time and now no loop in main function sumRange.
+  */
