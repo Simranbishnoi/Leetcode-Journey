@@ -1,0 +1,44 @@
+//Time COmplexity :O(n)
+/* This was my appraoch at first finding the index where sorted array is breaking then from that index (saving break index) checking whether rest of array is sorted or not and at last checking whether the last element is smaller than first or not .*/
+class Solution {
+    public boolean check(int[] nums) {
+         int brk_idx=-1;
+         for(int i=0;i<nums.length-1;i++){
+            if(nums[i]>nums[i+1])
+            {
+                brk_idx=i;
+                break;       //i missed it before it is updating with each  iteration
+            } 
+         }
+         if(brk_idx==-1){return true;}      //array is sorted
+         for(int j=brk_idx+1;j<nums.length-1;j++){
+            if(nums[j]<=nums[j+1]){
+             continue;
+            }
+            else{
+                return false;
+            }
+         }
+         return nums[nums.length-1]<=nums[0];      //we can't check this condition before because if array is already sorted then this will fail so check sorted array condition first which will return true and this at last
+
+            
+    }
+}
+/*
+this appraoch I did using LLM guidance but I was having different appraoch which is above code
+here i learnt how only using count variable they identified whether the array was sorted and rotated.
+ int count=0;
+       for(int i=0;i<nums.length-1;i++){
+        if(nums[i]>nums[i+1]){
+            count++;
+        }
+        
+        }
+       if(nums[nums.length-1]>nums[0])
+       count++;
+       if(count<=1)
+       return true;
+       else
+        return false;
+       
+        */
