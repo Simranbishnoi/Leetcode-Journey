@@ -1,0 +1,41 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int k=1;
+       for(int i=1;i<nums.length;i++){
+        
+         if(nums[i]!=nums[i-1]){
+           nums[k]=nums[i];
+           k++;
+         }
+       }
+       return k;
+    }
+}
+/*This approach taught me just think of question an dimage a way how it is happening ,whenver you   encounter a unique element copy it og array and increment the index
+/* 
+// TC=O(n)
+this is my approach where i applied a simple concept of creating one temporary array and storing unique elements in there and counting k
+// but due to temporary array my space complexitiy increased to O(n) which is not suitable
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int list[]=new int[nums.length];
+         int k=1,j=1;
+         list[0]=nums[0];
+        for(int i=0;i<nums.length-1;i++)
+        {
+            if(nums[i]!=nums[i+1]){
+                list[j]=nums[i+1];
+                j++;
+                k++;
+            }
+            else{
+                continue;
+            }
+        }
+        for(int i=0;i<k;i++){
+            nums[i]=list[i];
+
+        }
+        return k;
+    }
+}*/
