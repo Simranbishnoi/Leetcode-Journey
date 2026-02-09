@@ -1,0 +1,32 @@
+// This approach taught me to observe and think how can I reduce space complexity by just observation and reverse   
+//TC:O(n) adn space complexity is O(1) as we didn't used any temp array
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int n=nums.length;
+        k=k%n;
+        reverse(nums,0,n-1);    //I learnt that order of reversal also matters 
+        reverse(nums,0,k-1);
+        reverse(nums,k,n-1);
+        
+    }
+    void reverse(int arr[],int a,int b){
+    while(a<b){
+        int temp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+        a++;
+        b--;
+    }
+}
+}
+/*
+//this is my appraoch which produces TC:O(n) and space complexity O(n) because i used new temp array to store the elements ; 
+int arr[]=new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            arr[(i+k)%nums.length]=nums[i];
+        }
+        for(int j=0;j<nums.length;j++){
+            nums[j]=arr[j];
+        }
+ */
+
