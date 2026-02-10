@@ -1,0 +1,63 @@
+//TC : O(n)  ,Only thing to do was to think alternative ,not of zereos ,think about shifting non zeros left 
+class Solution {
+    public void moveZeroes(int[] nums) {
+         int n=nums.length;
+         int j=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]!=0){
+                    int temp=nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=temp;
+                    j++;
+                }
+        }
+    }
+}
+/*
+//TC:O(n^2) as it is having two for loops where i checked every element and performed it's swap with all elements next to it.
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(nums[i]==0){
+                    int temp=nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=temp;
+                }
+            }
+        }
+    }
+}
+
+/*
+this is my approach for shifting all zeroes at last by swaps not keeping the order of non zero elements 
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int n=nums.length;
+        int k=0;
+        for(int i=0;i<n && i<n-k;i++){       //important fix of i<n-k which stopped the again swaps of zeroes with behind indices 
+            if((n-1)>k){
+            if(nums[i]==0){
+                if(nums[n-k-1]!=0){
+                    int temp=nums[i];
+                    nums[i]=nums[n-k-1];
+                    nums[n-k-1]=temp;
+                }
+                else{
+                 k++;
+                  int temp=nums[i];
+                    nums[i]=nums[n-k-1];
+                    nums[n-k-1]=temp;
+
+                }
+                k++;
+            }
+            else
+            continue;
+            }
+        }
+    }
+}
+*/
