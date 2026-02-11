@@ -1,0 +1,20 @@
+/*TC:O(n) this is my brute plus optimised approach which is keeping a count variable k for coutning consectuive 1's in array and if any digit occurs except one ,reseting the counter again 0 and then updating max with k values;*/
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int k=0;
+        int max=k;
+        int n=nums.length;
+        for(int i=0;i<n;i++){
+           if(nums[i]==1){
+            k++;
+            if(k>max){
+            max=k;}
+           } 
+           else{
+            k=0;
+            continue;
+           }
+        }
+        return max;
+    }
+}
