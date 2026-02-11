@@ -1,0 +1,27 @@
+//My brute force approach which give O(n^2) in worst case 
+class Solution {
+    public int singleNumber(int[] nums) {
+        int n=nums.length;
+        int k=0,temp=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i!=j){
+                if(nums[i]==nums[j]){
+                    k=1;
+                    break;
+                }
+                else continue;
+                }
+                else continue;
+
+            }
+            if(k==0){
+                temp= nums[i];
+            }
+            else {k=0;
+            continue;}
+        }
+        return temp;
+    }
+}
+*/
