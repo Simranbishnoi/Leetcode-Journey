@@ -1,3 +1,32 @@
+//TC:O(n)  DNF algorithm 
+//I learnt how low mid high work as boundaries during linear scan
+class Solution {
+    public void sortColors(int[] nums) {
+        int n=nums.length;
+        int low=0;
+        int mid=0;
+        int high=n-1;
+        while(mid<=high){
+            if(nums[mid]==0){          //if we got zero means 1st region send it to low inc low and check next mid(inc mid)
+                int t1=nums[low];
+                nums[low]=nums[mid];
+                nums[mid]=t1;
+                mid++;
+                low++;
+            }
+            else if(nums[mid]==1){       // mid is 1 so found 1 now check next so inc mid
+                mid++;
+            }
+            else if(nums[mid]==2){       //mid is 2 it should be right side of mid so swap with high ,dec high because right side of high are accumulated 2's and don't inc mid 
+                int t2=nums[mid];
+                nums[mid]=nums[high];
+                nums[high]=t2;
+                high--;
+            }
+
+        }
+    }
+}
 //Brute force approach : O(n^2) 
 class Solution {
     public void sortColors(int[] nums) {
