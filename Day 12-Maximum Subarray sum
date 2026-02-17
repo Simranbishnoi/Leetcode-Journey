@@ -1,3 +1,26 @@
+//Kadane's algorithm TC:O(N) 
+class Solution {
+    public int maxSubArray(int[] nums) {
+       int currentSum=nums[0];
+       int maxSum=nums[0]; 
+       for(int i=1;i<nums.length;i++){
+        if(nums[i]>currentSum+nums[i]){                            //if any number addition is actually more than currentSum itself ,update it with number 
+            currentSum=nums[i];
+           
+        }
+        else{
+            currentSum+=nums[i];                                  //if not the add it to current sum 
+        }
+        if(currentSum>maxSum){
+            maxSum=currentSum;
+            
+        }
+       }
+       return maxSum;
+    }
+}
+
+
 MAx subarray sum problem DAA   TC:O(n log n)
 class Solution {
 
