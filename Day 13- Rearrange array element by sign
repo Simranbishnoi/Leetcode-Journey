@@ -1,4 +1,24 @@
-    //imp I thought upto finding next possible pos or neg value but swap will distort the order but shifitng by one won't so do that but keeping even odd index in mind cleared the vision .
+//Better approach TC:O(N) and SC:O(N) 
+//here I used simple approach of using two pointers keeping pos neg index concept in mind and a separate array 
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+         int[] result = new int[nums.length];
+        int posIdx=0;
+        int negIdx=1;
+       for(int i=0;i<nums.length;i++){
+            if(nums[i]>0){
+                result[posIdx]=nums[i];
+                posIdx+=2;
+            }
+            else{
+                result[negIdx]=nums[i];
+                negIdx+=2;
+            }
+       }
+       return result;
+    }
+}
+//imp I thought upto finding next possible pos or neg value but swap will distort the order but shifitng by one won't so do that but keeping even odd index in mind cleared the vision .
 // Time Limit is exceeding
 class Solution {
     public int[] rearrangeArray(int[] nums) {
