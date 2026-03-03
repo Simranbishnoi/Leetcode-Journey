@@ -1,3 +1,4 @@
+//TC:O(n^2) and from this problem i understood that how solution becam eeasy after observing that transpose and reverse will bring out 90 rotation
 class Solution {
     public void rotate(int[][] matrix) {
         int n =matrix.length;
@@ -10,5 +11,20 @@ class Solution {
                 
             }
         }
+      for(int i=0;i<n;i++){
+                reverse(matrix[i],0,m-1);
+            
+        }
+    }
+    void reverse(int row[],int j1,int j2){
+        while(j1<j2){
+            int temp=row[j1];
+            row[j1]=row[j2];
+            row[j2]=temp;
+
+            j1++;
+            j2--;
+        }
     }
 }
+
