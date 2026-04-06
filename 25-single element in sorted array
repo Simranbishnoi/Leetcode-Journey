@@ -1,0 +1,15 @@
+//o(log n)
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int low=0;
+        int high=nums.length-1;
+        while(low<high){
+            int mid=(low+high)/2;
+            if(mid%2==1)mid--;  //will make sure we are at first element of pair
+            if(nums[mid]==nums[mid+1])low=mid+2;        //if mid is even and mid+1 (odd) same ,no obstacles arrived yet so might be in right half so low to mid+2 (mid+1 is pair part)
+            else high=mid;          //if not match with mid+1 where mid is even mean it might match with mid-1 (odd) and if pair is odd even then single element already arrived so high=mid
+
+        }
+        return nums[low];
+    }
+}
