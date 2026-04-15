@@ -1,0 +1,51 @@
+/*
+piles =
+[1000000000,1000000000]
+h =
+3
+this case is time limit exceded because too many iterations
+// Tc :O(n* maxPile) i am iterating through array and adding hours by ceil (piles[i]/k)
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int k=1,total=0;
+        while(true){
+            total=0;
+        for(int i=0;i<piles.length;i++){
+            int hr =(piles[i]+k-1)/k;       //crct ceil formula
+            total+=hr;
+            if (total > h) break;
+            
+           
+        }
+        if (total <= h) return k;
+
+            k++;
+        }
+     
+
+    }
+}
+*/
+
+//monotonic function - use binary function
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+          int low=1;
+          int high=0;
+          for(int pile:piles){
+            high=Math.max(high,pile);
+          }
+      while(low<high){
+        int mid=low+(high-low)/2;
+        int total=0;
+        for(int pile:piles){
+            total+=(pile+mid-1)/mid;  //ceil division
+            if(total>h) break;
+        }
+        if(total<=h)high=mid;
+        else low=mid+1;
+
+      }
+      return low;
+    }
+}    
