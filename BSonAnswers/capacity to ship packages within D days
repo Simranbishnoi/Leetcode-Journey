@@ -1,0 +1,43 @@
+class Solution {
+
+    //if capacity is mid ,can i ship within given days?
+    boolean required_days(int mid,int []weights,int days){
+          int d=1;
+          int load=0;
+        for(int weight:weights){
+         if(load+weight<=mid){
+            load+=weight;
+         }
+         else{
+            d++;
+            load=weight;
+         }
+            
+       
+    }
+    return d<=days;
+    }
+    public int shipWithinDays(int[] weights, int days) {
+        int high=0;                  
+        int low=weights[0];         //will be max of weights
+        int n=weights.length;
+        for(int i=0;i<n;i++){
+            high+=weights[i];          //will be sum of all weights
+       
+            low = Math.max(low, weights[i]);
+       
+        }
+       
+        while(low<=high){
+            int mid=(low+high)/2;
+             if(required_days(mid,weights,days)){
+                high=mid-1;
+             }
+             else
+             low=mid+1;
+       
+          
+        }
+        return low;
+    }
+}
