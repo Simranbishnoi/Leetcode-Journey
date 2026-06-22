@@ -1,0 +1,26 @@
+class Solution {
+    public String removeOuterParentheses(String s) {
+      int n=s.length();
+      int depth=0;
+      String temp="";
+      for(int i=0;i<n;i++){
+        if(s.charAt(i)=='('){
+    if (depth>0)
+            temp+=s.charAt(i);
+                    depth++;
+        }
+        else if(s.charAt(i)==')'){
+
+            depth--;
+            if(depth==0){
+                continue;
+            }
+            else
+           temp = temp.concat(String.valueOf(s.charAt(i)));  //we should assign temp= coz string in java immutable and for concatenation we can't concat char ,only string to string
+        }
+       
+
+      }
+      return temp;
+    }
+}
