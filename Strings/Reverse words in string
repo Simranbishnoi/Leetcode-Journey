@@ -1,0 +1,15 @@
+//not brute force but using methods in java string
+class Solution {
+    public String reverseWords(String s) {
+       String[]words=s.trim().split("\\s+");      //not alone split(" ") if extra space btw two words is there it will consider space also as array element
+       StringBuilder ans=new StringBuilder();
+       for(int i=words.length-1;i>=0;i--){
+        ans.append(words[i]);
+        if(i!=0)              //necessary otherwise after last word it will print extra space
+        ans.append(" ");
+       }
+       return ans.toString();
+
+    }
+}
+//if asked without methods?
