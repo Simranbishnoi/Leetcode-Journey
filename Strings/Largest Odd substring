@@ -1,0 +1,23 @@
+class Solution {
+    public String largestOddNumber(String num) {
+   
+      for(int i=num.length()-1;i>=0;i--){
+        if(num.charAt(i)%2!=0)
+        return num.substring(0,i+1);
+        else continue;
+      }
+      return "";
+    }
+}
+//if question ask largest single digit 
+//             int num1=Integer.parseInt(num);
+// int large=Integer.MIN_VALUE;
+//             while(num1!=0){
+                
+//                 int digit=num1%10;
+//                 if(digit%2!= 0 && digit>large)
+//                     large=digit;
+
+//                 num1/=10;
+//             }
+//return large;
