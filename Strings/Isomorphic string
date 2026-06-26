@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        //hash map 
+        if(s.length()!=t.length())
+        return false;
+       HashMap<Character,Character> s_to_t=new HashMap<>();
+       HashMap<Character,Character> t_to_s=new HashMap<>();
+       for(int i=0;i<s.length();i++){
+             char sc=s.charAt(i);
+             char tc=t.charAt(i);
+             //check if char sc is kept in s_to_t and same for tc
+             if(s_to_t.containsKey(sc)){
+                if(s_to_t.get(sc)!=tc){
+                    return false;
+                }
+             }
+             if(t_to_s.containsKey(tc)){
+                if(t_to_s.get(tc)!=sc) return false;
+             }
+             //put char which aren't kept yet
+            s_to_t.put(sc,tc);
+            t_to_s.put(tc,sc);
+       }
+       //no conflict
+       return true;
+    }
+}
