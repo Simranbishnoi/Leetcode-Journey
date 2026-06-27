@@ -1,0 +1,58 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+         if(s.length()!=goal.length())
+        return false;
+        if((s+s).contains(goal)) return true;
+        else return false;
+    }
+}    
+//brute approach
+// class Solution {
+//     public boolean rotateString(String s, String goal) {
+//         if(s.length()!=goal.length())
+//         return false;
+// for(int i=0;i<s.length();i++){
+
+//     if(goal.charAt(i)==s.charAt(0)){
+
+//         String right=goal.substring(i);
+//         String left=goal.substring(0,i);
+
+//         if((right+left).equals(s))
+//             return true;
+//     }
+// }
+
+// return false;
+//     }
+// }
+// int j=0;//s
+    //     int i;
+    //     int count=0;//matched chars
+    //     if(s.length()!=goal.length())
+    //     return false;
+    //     for(i=0;i<s.length();i++){  //i is goal chars
+    //     if(s.charAt(j)==goal.charAt(i))
+    //    { j++;
+    //     count++;}
+    //     }
+    //     if(s.substring(j,s.length()).equals(goal.substring(0,i-count+1)))
+    //     return true;
+    //     else
+    //     return false;
+
+
+    //this is not reliable if duplicates are there coz we are matching and break at first loop 
+    // int start=-1;
+//     if(s.length()!=goal.length())return false;
+//     for(int i=0;i<s.length();i++){
+//        if(s.charAt(0)==goal.charAt(i))
+//        {start=i;
+//        break;}
+//     }
+//     if(start==-1)return false;
+//     String right=goal.substring(start);
+//     String left=goal.substring(0,start);
+//    String res= right+left;
+//     if(res.equals(s))return true;
+//     else return false;
