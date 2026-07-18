@@ -13,3 +13,34 @@ class Solution {
         return(int) res ;
     }
 }
+
+
+
+//recursive approach
+class Solution {
+    long mod = 1000000007;
+
+    public int countGoodNumbers(long n) {
+
+        long epow = (n + 1) / 2;
+        long opow = n / 2;
+
+        long ans = (pow(5, epow) * pow(4, opow)) % mod;
+
+        return (int) ans;
+    }
+
+    public long pow(long x, long pow) {
+        if (pow == 0)
+            return 1;
+
+        long half = pow(x, pow / 2);
+
+        long ans = (half * half) % mod;
+
+        if (pow % 2 == 1)
+            ans = (ans * x) % mod;
+
+        return ans;
+    }
+}
