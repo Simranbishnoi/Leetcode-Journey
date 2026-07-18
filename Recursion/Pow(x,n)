@@ -1,4 +1,22 @@
 class Solution {
+    public double myPow(double x, int n) { 
+        double ans=1.0;
+        long N=n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+        while(N>0){
+            if(N%2==1)//odd power    x*half*half
+            ans*=x;
+            x*=x;    //even power not extra x
+            N/=2;
+        }
+        
+        return ans;
+    }
+}
+/*class Solution {
    public double myPow(double x, int n) { 
         // Use a long variable to safely prevent Integer.MIN_VALUE overflow
         long N = n; 
@@ -18,3 +36,4 @@ class Solution {
       return x*half*half;
     }
 }
+*/
