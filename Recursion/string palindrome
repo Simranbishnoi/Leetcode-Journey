@@ -22,3 +22,30 @@ System.out.println("yes");
  
     }
 }
+
+
+//using single pointer not left right only i
+import java.util.Scanner;
+class practice{
+    public static void main(String[]args){
+      Scanner sc=new Scanner(System.in);
+      String s=sc.nextLine();
+      sc.close();
+       int l=0;
+ int r=s.length()-1;
+     if( pallindrome(s,0))
+System.out.println("yes");
+     else
+        System.out.println("NO");
+    }
+    public static boolean pallindrome(String s,int i){
+        int n=s.length()-1;
+        if(i>=n/2) return true;
+    if(s.charAt(i)!=s.charAt(n-i-1))
+        return false;
+
+     return pallindrome(s,i+1);
+   
+ 
+    }
+}
