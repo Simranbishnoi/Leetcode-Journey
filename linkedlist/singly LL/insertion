@@ -1,0 +1,13 @@
+import java.util.LinkedList;
+class single
+{
+    public static void main(String args[])
+    {
+      LinkedList<String>l=new LinkedList<String>();
+      l.add("sim");
+      l.add("SIM");
+      l.add("bishnoi");
+      l.add(0,"miss");  //insertion at start
+      System.out.println(l);
+    }
+}
