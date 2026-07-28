@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Scanner;
 class single
 {
     public static void main(String args[])
@@ -12,5 +13,21 @@ class single
       System.out.println(l.size());   //length of LL
       
       System.out.println(l);
+      Scanner sc=new Scanner(System.in);
+      String target=sc.nextLine();
+      
+      System.out.println(search(l,target));
+
+        sc.close();
+      
+    }
+    public static int search(LinkedList <String>l,String target){
+      for(int i=0;i<l.size();i++){
+        if(target.equals(l.get(i))){       //don't use ==
+          return i;
+        }
+        else continue;
+      }
+      return -1;
     }
 }
