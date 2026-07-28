@@ -8,6 +8,9 @@ class single
       l.add("SIM");
       l.add("bishnoi");
       l.add(0,"miss");  //insertion at start
+      l.remove(0);       //deletion of head
+      System.out.println(l.size());   //length of LL
+      
       System.out.println(l);
     }
 }
