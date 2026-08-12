@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+class prac
+{
+    public static boolean Strobo(String str)
+    {
+        Map<Character,Character>map =new HashMap<>();
+        map.put('6','9');
+        map.put('9','6');
+        map.put('0','0');
+        map.put('1','1');
+        map.put('8','8');
+        int l=0;
+        int r=str.length()-1;
+        while(l<=r)
+        {
+            if(!map.containsKey(str.charAt(l)))return false;
+            if(map.get(str.charAt(l))!=str.charAt(r))return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+    public static void main(String []args){
+        Scanner s=new Scanner(System.in);
+        String str=s.nextLine();
+        s.close();
+        if(Strobo(str))
+        System.out.println(str +"Strobo");
+    else
+        System.out.println(str +"No");
+    }
+}
