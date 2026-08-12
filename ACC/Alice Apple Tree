@@ -1,0 +1,10 @@
+class Solution {
+    public long minimumPerimeter(long neededApples) {
+        int r=0,sum=0;
+        while(sum<neededApples){
+            r++;
+            sum+=12*r*r;
+        }
+        return 8*r;
+    }
+}
