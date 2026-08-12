@@ -5,8 +5,8 @@ class Solution {
         return gcd(b%a,a);
     }
     public int findGCD(int[] nums) {
-        int res=1;
-        for(int i=0;i<nums.length;i++){
+        int res=nums[0];//not 1
+        for(int i=1;i<nums.length;i++){//start from 2nd element
         res=gcd(res,nums[i]);
         }
         return res;
