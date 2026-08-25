@@ -1,0 +1,25 @@
+//brute force using pick and not pick
+class Solution {
+    void func(int ind,int n, int[] nums,List<Integer>subset,Set<List<Integer>>result)
+    {
+        if(ind==n)
+        {
+            result.add(new ArrayList<>(subset));
+            return;
+        }
+        
+        subset.add(nums[ind]);
+//pick
+        func(ind+1,n,nums,subset,result);
+        subset.remove(subset.size()-1);
+//no pick
+        func(ind+1,n,nums,subset,result);
+        
+    }
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Set<List<Integer>>result=new HashSet<>();// how to use set,remove duplicates subsets
+         int n=nums.length;
+        func(0,n,nums,new ArrayList<>(),result);
+        return new ArrayList<>(result); // how to convert back to list 
+    }
+}
