@@ -23,3 +23,27 @@ class Solution {
         return new ArrayList<>(result); // how to convert back to list 
     }
 }
+
+//handling duplicates within recursion only 
+class Solution {
+    void func(int ind,int n, int[] nums,List<Integer>ds,List<List<Integer>>result)
+    {
+        result.add(new ArrayList<>(ds));
+        for(int i=ind;i<n;i++)              // if we won't use for loop then it will use only pick not pick and duplicate subsets will come ,so loop will parse the duplicates
+        {
+            if(i!=ind && nums[i]==nums[i-1])continue;
+            ds.add(nums[i]);
+            func(i+1,n,nums,ds,result);
+            ds.remove(ds.size()-1);
+        }
+
+        
+    }
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>>result=new ArrayList<>();
+        int n=nums.length;
+        func(0,n,nums,new ArrayList<>(),result);
+        return result;
+    }
+}
