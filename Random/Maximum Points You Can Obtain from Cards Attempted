@@ -25,3 +25,28 @@ class Solution {
         return maxSum;
     }
 }
+//window function with complemetary sum ,instead finding maxsum of k length ,finding minSum of n-k length and then subtracting from total sum
+class Solution {
+    public int maxScore(int[] cardPoints, int k) {
+        int n=cardPoints.length;
+        int windowSum=0;
+        int totalSum=0;
+        for(int c :cardPoints)
+        totalSum+=c;
+        for(int i=0;i<n-k;i++){
+            windowSum+=cardPoints[i];
+        }
+        int l=0;
+        int r=n-k-1;
+        int minSum=windowSum;
+        while(r<n-1){
+            r++;
+            windowSum+=cardPoints[r];
+            windowSum-=cardPoints[l];
+            l++;
+            if(minSum>windowSum)minSum=windowSum;
+        }
+        return (totalSum-minSum);
+
+    }
+}
