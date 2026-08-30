@@ -1,0 +1,27 @@
+//recursion approach by myself but it is brute force approach we don't need to traverse every possible
+class Solution {
+      static int maxSum;
+    public static void func(int[]arr,int sum,int k,int i,int j){
+        if(k==0){
+            maxSum=Math.max(maxSum,sum);
+        return ;
+        }
+//recursion as picking left or right
+        func(arr,sum+arr[i],k-1,i+1,j); // no need to do following as they are not impacting original sum and  i & j values
+//sum-=arr[i];
+//i--;
+        func(arr,sum+arr[j],k-1,i,j-1); //also keep in mind if func return int and store o/p here also like left/right and final return max of left,right
+      //sum-=arr[j];
+//j++;
+        
+    }
+    public int maxScore(int[] cardPoints, int k) {
+        maxSum = Integer.MIN_VALUE;
+        int n=cardPoints.length;
+        int sum=0;
+        int i=0;
+        int j=n-1;
+        func(cardPoints,sum,k,i,j);
+        return maxSum;
+    }
+}
