@@ -1,0 +1,21 @@
+//i learnt how to not only think of correct pattern but also trying to rephrase question if there's any other way around .THis question taught me that instead of thinking for max 1 and flipping zeros ,think max length having k zeroes 
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+        int L=0;
+        int R=0;
+        int n=nums.length;
+        int zeroCount=0;
+        int maxLength=Integer.MIN_VALUE;
+        while(R<n){
+            if(nums[R]==0)zeroCount++;
+            while(zeroCount>k){
+                if(nums[L]==0)
+                zeroCount--;
+                L++;
+            }
+            maxLength=Math.max(maxLength,R-L+1);
+            R++;
+        }
+        return maxLength;
+    }
+}
