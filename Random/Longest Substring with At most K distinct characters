@@ -1,0 +1,36 @@
+//i understood the whole logic and it was the exact same problem as fruits into basket that was on array and this is on string
+class Solution {
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+
+        int L = 0;
+        int maxLength = 0;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int R = 0; R < s.length(); R++) {
+
+            // Add the current character
+            map.put(s.charAt(R), map.getOrDefault(s.charAt(R), 0) + 1);
+
+            // Too many distinct characters
+            while (map.size() > k) {
+
+                char leftChar = s.charAt(L);
+
+                map.put(leftChar, map.get(leftChar) - 1);
+
+                // Character completely removed from window
+                if (map.get(leftChar) == 0) {
+                    map.remove(leftChar);
+                }
+
+                L++;
+            }
+
+            // Current window is valid
+            maxLength = Math.max(maxLength, R - L + 1);
+        }
+
+        return maxLength;
+    }
+}
