@@ -13,3 +13,22 @@ class Solution {
         return subCount;
     }
 }
+//optimised using sliding window and frequency array
+class Solution {
+    public int numberOfSubstrings(String s) {
+       int L=0,R=0;
+       int freq[]=new int[3];
+       int n=s.length();
+       int count=0;
+       while(R<n){
+        freq[s.charAt(R)-'a']++;
+        while(freq[0]>0 && freq[1]>0 && freq[2]>0){
+            count+=n-R;
+            freq[s.charAt(L)-'a']--;
+            L++;
+        }
+        R++;
+       } 
+       return count;
+    }
+}
