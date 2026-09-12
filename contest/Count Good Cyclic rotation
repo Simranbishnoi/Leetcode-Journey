@@ -29,3 +29,37 @@ class Solution {
         return count;
     }
 }
+//optimisd using sliding fixed sized window with just basic thinking what to add what to subtract
+//one edge case of thinking long instead of declaring int 
+class Solution {
+    public int countGoodRotations(int[] nums) {
+
+        int n = nums.length;
+        int half = n / 2;
+
+        long sumF = 0;
+        long sumL = 0;
+        int count = 0;
+
+        for (int i = 0; i < half; i++) {
+            sumF += nums[i];
+        }
+
+        for (int i = half; i < n; i++) {
+            sumL += nums[i];
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            if (sumF > sumL) {
+                count++;
+            }
+
+
+            sumF = sumF - nums[i]+ nums[(i + half) % n];
+            sumL = sumL - nums[(i + half) % n]+ nums[i];
+        }
+
+        return count;
+    }
+}
