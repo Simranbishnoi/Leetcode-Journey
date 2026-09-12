@@ -35,3 +35,26 @@ class Solution {
      return ans;   
     }
 }
+//optimised
+class Solution {
+    public int countRotations(String s, int k) {
+        int n=s.length();
+        int ans=0;
+        String doubled=s+s;//will have all possible rotation and incrementing window one by one meaning my logic 
+       // int N=doubled.length(); no need becoz within n we will get all unique 
+         int score=0;
+        for(int L=0;L<n-1;L++){
+           
+            if(doubled.charAt(L)==doubled.charAt(L+1))score++;
+        }
+        for(int L=0;L<n;L++){
+             if(score==k)ans++;
+            
+            if(doubled.charAt(L)==doubled.charAt(L+1))score--;
+            if(doubled.charAt(L+n-1)==doubled.charAt(L+n))score++;
+            
+        }
+        
+     return ans;   
+    }
+}
