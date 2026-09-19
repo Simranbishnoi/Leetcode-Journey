@@ -1,0 +1,32 @@
+class Solution {
+    public static boolean isPrime(int num){
+        if (num < 2) return false;
+        for(int i=2;i*i<=num;i++){
+            if(num%i==0)return false;
+        }
+        
+            return true;
+    }
+    public ArrayList<Integer> extractNumbers(String s) {
+        ArrayList<Integer>l=new ArrayList<>();
+        int num=0;
+        boolean building=false;
+        for(int i=0;i<s.length();i++){
+            
+            if(Character.isDigit(s.charAt(i))){
+                 num=num*10+(s.charAt(i)-'0');
+                building=true;
+            } 
+            else{if(building ){
+                if( isPrime(num))
+                
+            l.add(num);
+                num=0;
+                building =false;
+            }
+        }
+        }
+        if(building && isPrime(num))l.add(num);
+        return l;
+    }
+}
