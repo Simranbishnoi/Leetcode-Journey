@@ -1,0 +1,53 @@
+/*//HashSet is not correct becoz this will give unique char but we can have aca (we don't need adjacent duplicates)
+String s = "abbca";//give abc but we need aca
+StringBuilder sb = new StringBuilder();
+Set<Character> seen = new LinkedHashSet<>();
+
+for (char c : s.toCharArray()) {
+    seen.add(c);
+}
+
+for (char c : seen) {
+    sb.append(c);
+}
+
+System.out.println(sb.toString()); // Output: geksfor
+*/
+//use stack for handling the most recent char 
+class Solution {
+    public String removeDuplicates(String s) {
+
+        // write your code
+        StringBuilder s=new StringBuilder();
+        Deque<Character>stack=new ArrayDeque<>();
+        for(int i=0;i<s.length();i++){
+            if(stack.peek()==s.charAt(i)){
+                stack.pop();
+                s.deleteCharAt(i);
+                
+            }
+            else{
+            stack.push(s.charAt(i));
+                s.append(s.charAt(i));
+                
+            }
+        }
+        return s.toString();
+    }
+}
+but this is also wrong we should not use both stack and stringbuilder instead we can use stringbuilder as stack
+class Solution {
+    public String removeDuplicates(String s) {
+
+        // write your code
+        StringBuilder s1=new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            char c=s.charAt(i);
+            if(s1.length()>0 && s1.charAt(s1.length()-1)==c)
+                s1.deleteCharAt(s1.length()-1);
+            else
+                s1.append(c);
+        }
+        return s1.toString();
+    }
+}
